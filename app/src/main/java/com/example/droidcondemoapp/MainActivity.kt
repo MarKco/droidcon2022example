@@ -1,5 +1,6 @@
 package com.example.droidcondemoapp
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.StatusBarManager
@@ -12,7 +13,9 @@ import android.os.Build
 import android.os.Bundle
 import android.os.ext.SdkExtensions.getExtensionVersion
 import android.provider.MediaStore
+import android.util.AttributeSet
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -47,6 +50,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.button_for_tile).setOnClickListener {
+
+            requestPermissions(
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                3894729
+            )
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 val statusBarManager =
                     getSystemService(Context.STATUS_BAR_SERVICE) as StatusBarManager
@@ -99,6 +108,16 @@ class MainActivity : AppCompatActivity() {
         // Get photo picker response for single select.
         val currentUri: Uri = data?.data!!
         findViewById<ImageView>(R.id.picture).setImageURI(currentUri)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        requestPermissions(
+            arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+            3894729
+        )
+
+        return super.onCreateView(name, context, attrs)
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
