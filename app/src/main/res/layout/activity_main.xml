@@ -7,22 +7,60 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/language_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
     <ImageView
         android:id="@+id/picture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/language_textview"
+        app:layout_constraintStart_toStartOf="@+id/language_textview"
+        app:layout_constraintTop_toBottomOf="@+id/language_textview" />
 
     <Button
         android:id="@+id/button_for_tile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tile me!"
+        android:text="@string/tile_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/picture" />
+
+    <Button
+        android:id="@+id/button_lang_en"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Switch Language to English"
+        app:layout_constraintEnd_toEndOf="@id/button_for_tile"
+        app:layout_constraintStart_toStartOf="@id/button_for_tile"
+        app:layout_constraintTop_toBottomOf="@id/button_for_tile" />
+
+    <Button
+        android:id="@+id/button_lang_it"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Switch Language to Italian"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_lang_en" />
+
+    <Button
+        android:id="@+id/button_lang_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset to Device Language"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_lang_it" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
