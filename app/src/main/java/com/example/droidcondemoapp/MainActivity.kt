@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("DroidconDemoApp", "onCreate")
         setContentView(R.layout.activity_main)
 
         findViewById<ConstraintLayout>(R.id.background_layout).setOnClickListener {
@@ -106,6 +107,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        Log.d("DroidconDemoApp", "onResume")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             val language = when (localeManager?.applicationLocales?.toLanguageTags()) {
                 "en" -> "English"
