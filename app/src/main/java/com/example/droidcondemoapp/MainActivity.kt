@@ -80,6 +80,11 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
         }
+
+        val intentForForegroundService = Intent(this, MySampleForegroundService::class.java)
+        startService(intentForForegroundService)
+
+
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
