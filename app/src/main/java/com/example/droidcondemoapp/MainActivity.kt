@@ -16,6 +16,7 @@ import android.provider.MediaStore
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.view.accessibility.AccessibilityManager
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -79,6 +80,13 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT,
                 ).show()
             }
+        }
+
+        (getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).addAudioDescriptionRequestedChangeListener(
+            mainExecutor
+        ) {
+            Log.d("AudioDescription", "Listener!")
+            Log.d("AudioDescription", "Was the toggle on? $it")
         }
     }
 
