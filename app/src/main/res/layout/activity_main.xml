@@ -17,10 +17,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button_for_tile"
+        android:id="@+id/request_permission"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tile me!"
+        android:text="Request permission"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/picture" />
