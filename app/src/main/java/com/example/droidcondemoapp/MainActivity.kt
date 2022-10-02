@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("DroidconDemoApp", "onCreate")
         setContentView(R.layout.activity_main)
 
         findViewById<ConstraintLayout>(R.id.background_layout).setOnClickListener {
@@ -136,36 +135,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // onActivityResult() handles callbacks from the photo picker.
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode != Activity.RESULT_OK) {
-            // Handle error
-            return
-        }
-        // Get photo picker response for single select.
-        val currentUri: Uri = data?.data!!
-        findViewById<ImageView>(R.id.picture).setImageURI(currentUri)
-    }
-
-    @RequiresApi(Build.VERSION_CODES.M)
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        requestPermissions(
-            arrayOf(Manifest.permission.POST_NOTIFICATIONS),
-            3894729
-        )
-
-        return super.onCreateView(name, context, attrs)
-    }
-
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    fun isPhotoPickerAvailable(): Boolean {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            true
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            getExtensionVersion(Build.VERSION_CODES.R) >= 2
-        } else {
-            false
-        }
-    }
 }
