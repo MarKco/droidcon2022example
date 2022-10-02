@@ -1,6 +1,5 @@
 package com.example.droidcondemoapp
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.LocaleManager
 import android.app.StatusBarManager
@@ -41,12 +40,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.button_for_tile).setOnClickListener {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            localeManager =
+                getSystemService(Context.LOCALE_SERVICE) as LocaleManager
+        }
 
-            requestPermissions(
-                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
-                3894729
-            )
+        findViewById<Button>(R.id.button_lang_en).setOnClickListener {
+            localeManager?.applicationLocales = LocaleList(Locale.forLanguageTag("en"))
+        }
+        findViewById<Button>(R.id.button_lang_it).setOnClickListener {
+            localeManager?.applicationLocales = LocaleList(Locale.forLanguageTag("it"))
+        }
+        findViewById<Button>(R.id.button_lang_reset).setOnClickListener {
+            localeManager?.applicationLocales = LocaleList.getEmptyLocaleList()
+        }
+
+        findViewById<Button>(R.id.button_for_tile).setOnClickListener {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 val statusBarManager =
@@ -76,16 +85,6 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             localeManager =
                 getSystemService(Context.LOCALE_SERVICE) as LocaleManager
-        }
-
-        findViewById<Button>(R.id.button_lang_en).setOnClickListener {
-            localeManager?.applicationLocales = LocaleList(Locale.forLanguageTag("en"))
-        }
-        findViewById<Button>(R.id.button_lang_it).setOnClickListener {
-            localeManager?.applicationLocales = LocaleList(Locale.forLanguageTag("it"))
-        }
-        findViewById<Button>(R.id.button_lang_reset).setOnClickListener {
-            localeManager?.applicationLocales = LocaleList.getEmptyLocaleList()
         }
 
     }
