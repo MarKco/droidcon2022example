@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">DroidconDemoApp</string>
+    <string name="app_name">Droidcon demo app in English</string>
     <string name="my_default_tile_label">Test Tile</string>
+    <string name="tile_title">Tile me!</string>
 </resources>

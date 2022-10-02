@@ -9,6 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.droidcondemoapp"
+        resConfigs("en", "it")
         minSdk 26
         targetSdk 33
         versionCode 1

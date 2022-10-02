@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Droidcon demo italiano</string>
+    <string name="my_default_tile_label">Tile di test</string>
+    <string name="tile_title">Fai di me una piastrella!</string>
+</resources>
