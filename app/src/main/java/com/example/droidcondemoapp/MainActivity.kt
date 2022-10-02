@@ -1,6 +1,5 @@
 package com.example.droidcondemoapp
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.LocaleManager
 import android.app.StatusBarManager
@@ -42,11 +41,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<Button>(R.id.button_for_tile).setOnClickListener {
-
-            requestPermissions(
-                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
-                3894729
-            )
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 val statusBarManager =
