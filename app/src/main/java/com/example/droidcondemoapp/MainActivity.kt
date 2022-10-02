@@ -8,7 +8,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Icon
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.LocaleList
@@ -42,10 +41,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        findViewById<ConstraintLayout>(R.id.background_layout).setOnClickListener {
-            startPhotoPickerOrWhatev()
-        }
 
         findViewById<Button>(R.id.button_for_tile).setOnClickListener {
 
@@ -81,9 +76,6 @@ class MainActivity : AppCompatActivity() {
 
         val intentForForegroundService = Intent(this, MySampleForegroundService::class.java)
         startService(intentForForegroundService)
-
-
-    }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             localeManager =
