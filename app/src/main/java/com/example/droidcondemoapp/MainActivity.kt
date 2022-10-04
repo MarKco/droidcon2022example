@@ -1,16 +1,15 @@
 package com.example.droidcondemoapp
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Intent
-import android.net.Uri
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,23 +21,38 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<Button>(R.id.request_permission).setOnClickListener {
-
-            requestPermissions(
-                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
-                3894729
-            )
+//            requestPermissions(
+//                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+//                3894729
+//            )
+            sendNotification(findViewById(R.id.request_permission))
         }
+
     }
 
-    // onActivityResult() handles callbacks from the photo picker.
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode != Activity.RESULT_OK) {
-            // Handle error
-            return
+
+    private fun sendNotification(view: View?) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create the NotificationChannel
+            val name = "DroidconDemo"
+            val descriptionText = "Canale della demo del droidcon"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val mChannel = NotificationChannel("398398", name, importance)
+            mChannel.description = descriptionText
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(mChannel)
+
+            //Get an instance of NotificationManager//
+            val mBuilder: NotificationCompat.Builder = NotificationCompat.Builder(this)
+                .setSmallIcon(androidx.appcompat.R.drawable.abc_dialog_material_background)
+                .setContentTitle("My notification")
+                .setChannelId(mChannel.id)
+                .setContentText("Hello World!")
+
+            notificationManager.notify(1, mBuilder.build())
         }
-        // Get photo picker response for single select.
-        val currentUri: Uri = data?.data!!
-        findViewById<ImageView>(R.id.picture).setImageURI(currentUri)
     }
 }
