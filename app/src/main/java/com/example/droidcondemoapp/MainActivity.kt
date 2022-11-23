@@ -14,21 +14,24 @@ import androidx.core.app.NotificationCompat
 
 class MainActivity : AppCompatActivity() {
 
-    @SuppressLint("WrongConstant")
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+//    @RequiresApi(Build.VERSION_CODES.M)
+@SuppressLint("WrongConstant")
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.request_permission).setOnClickListener {
-//            requestPermissions(
-//                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
-//                3894729
-//            )
-            sendNotification(findViewById(R.id.request_permission))
-        }
-
+    findViewById<Button>(R.id.request_permission).setOnClickListener {
+        requestPermissions(
+            arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
+            3894729
+        )
+        sendNotification(findViewById(R.id.request_permission))
     }
+
+    sendNotification(findViewById(R.id.request_permission))
+
+}
 
 
     private fun sendNotification(view: View?) {

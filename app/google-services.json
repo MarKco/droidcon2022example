@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "623428945799",
+    "project_id": "droidcondemo-191af",
+    "storage_bucket": "droidcondemo-191af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623428945799:android:5ed1d1aba99aac7a5b7522",
+        "android_client_info": {
+          "package_name": "com.example.droidcondemoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "623428945799-srgjb9mj0igvh2f14dd2dj36m3njpmdp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4MwKA3JL8IMY6aXULev-izC4_FhkuCfk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "623428945799-srgjb9mj0igvh2f14dd2dj36m3njpmdp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
